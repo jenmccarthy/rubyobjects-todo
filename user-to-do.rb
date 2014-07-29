@@ -1,14 +1,13 @@
 require "./lib/tasks"
 require './lib/lists'
 
+
 @list_cat = []
 @list = []
 
 def main_menu
   loop do
     puts "Press 'q' to add a category or 'p' to list your categories"
-    # puts "Press 'a' to add a task or 'l' to list your tasks."
-    # puts "Press 'c' to change the status of your tasks."
     if @list_cat.length > 0
       puts "Press 'n' choose a category and add tasks to it"
       puts "Press 's' to show all categories and tasks"
@@ -23,12 +22,6 @@ def main_menu
       show_all
     elsif main_choice == 'n'
       pick_category
-    # elsif main_choice == 'a'
-    #   add_tasks
-    # elsif main_choice == 'l'
-    #   list_tasks
-    # elsif main_choice == 'c'
-    #   change_status
     elsif main_choice == 'x'
       puts "Goodbye"
       exit
@@ -94,27 +87,4 @@ def list_categories
   end
 end
 
-# def add_tasks
-#   puts "Enter a new task:"
-#   user_description = gets.chomp
-#   @tasks << Task.new(user_description)
-#   puts "Task added.\n\n"
-# end
-
-def list_tasks
-  puts "Here are all of your tasks:"
-  @list.each do |task|
-    puts "#{task.description} | #{task.status}"
-  end
-  puts "\n"
-end
-
-def change_status
-  puts "Change the status to 'c' for complete, or enter to move on"
-  @list.each do |task|
-  puts "Here's your task #{task.description}, with a current status of #{task.status}"
-    task.set_status(gets.chomp)
-  end
-  puts "\n"
-end
 main_menu
